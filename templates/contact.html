@@ -1,0 +1,38 @@
+{% extends 'base.html' %} 
+{% block contactactive %} active {% endblock %}
+{% block title %} Contact {% endblock %}
+{% block body %}
+<div class="container my-5">
+    <h1 class="display-3 text-center mb-3"><u>Contact Us</u></h1>
+    <form action="contact" method="POST">
+      {% csrf_token %}
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputfname">First Name</label>
+            <input type="text" name="fname" class="form-control" id="inputfname" placeholder="Alice">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputlname">Last Name</label>
+            <input type="text" name="lname" class="form-control" id="inputlname" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Email</label>
+          <input type="email" name="email" class="form-control" id="inputAddress" placeholder="abc@example.com">
+        </div>
+        <div class="form-group">
+          <label for="inputAddress2">Subject</label>
+          <input type="text" name="subject" class="form-control" id="inputAddress2" placeholder="Ex. Regarding this/that">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="inputCity">Description</label>
+            <textarea name="content" class="form-control" id=""  rows="10"></textarea>
+          </div>
+        
+        </div>
+        <div class="text-center">
+        <button type="submit" class="btn btn-outline-primary">Submit</button></div>
+      </form>
+</div>
+{% endblock %}

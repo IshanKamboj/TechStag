@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Search Results {% endblock %}
+{% block body %}
+
+<div class="container my-5">
+    {% if posts|length > 0 %}
+        <p class="mx-3 display-4">Search Results:</p>
+    
+    {% endif %}
+    {% if posts|length == 0 %}
+        <p class="mx-1 my-5 display-4">No Search Results</p>
+        <p><h5  class="mx-1">Search - <b>{{query}}</b> - Did not match any of dcouments</h5> 
+        </p>
+        <p><h5  class="mx-1">Suggestions-</h5>
+            <ul>
+                <li>Try using a different keyword</li>
+                <li>Check for spelling errors if any</li>
+                <li>Try fewer keywords</li>
+            </ul> 
+        </p>
+    {% endif %}
+    {% for post in posts %}
+    <div class="my-2">
+        <div class="card-body ">
+            <h3 class="card-title text-center  "><u>{{post.title}}</u></h3>
+
+            <p class="cardtext"><img src="{{post.profile}}" width="90" height="90" style="border-radius: 50px;"
+                    alt="" class="d-inline-block align-center mr-2" loading="lazy">{{post.username}},
+                {{post.designation}}</p>
+            <p class="card-text ">
+            <h6 class="ml-2">Posted on: {{post.date}}</h6>
+            </p>
+            <p class="card-text ml-2"> {{post.content|truncatechars:350|safe}} </p>
+			
+            <div class="text-center">
+			<br>
+                <a href="{% url 'fullBlog' post.id %}" class="btn btn-outline-primary mt-2">Read More</a>
+
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+    
+</div>
+
+
+
+{% endblock %}

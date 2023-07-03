@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Create Blog{% endblock %}
+{% block body %}
+
+<div class="container my-5">
+    <form method="POST" action="create">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <h2 class="text-center display-4"><label for="exampleFormControlTextarea1">Write Your Blog Here</label></h2>
+            <div class="container">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Title</label>
+                    <input type="text" name="title" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp">
+
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Category</label>
+                    <input type="text" name="category" class="form-control" id="exampleInputPassword1">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Content</label>
+                    <textarea  class="form-control" name="content" id="content" rows="10"></textarea>
+                </div>
+                {% if request.user.is_superuser %}
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Heading Image</label>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-dark">Post This Blog</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

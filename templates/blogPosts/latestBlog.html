@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block categoryactive %} active {% endblock %}
+{% block latestactive %} active {% endblock %}
+{% block title %} Most latest {% endblock %}
+{% block body %} <div class="container my-5">
+    <div class="card">
+        <div class="card-header">
+            <h2>Latest Blogs:</h2>
+        </div>
+    </div>
+    {% for post in posts %}
+    <div class="my-2">
+        <div class="card-body ">
+            <h3 class="card-title text-center  "><u>{{post.title}}</u></h3>
+
+            <p class="cardtext"><img src="{{post.profile}}" width="90" height="90" style="border-radius: 50px;"
+                    alt="" class="d-inline-block align-center mr-2" loading="lazy">{{post.username}},
+                {{post.designation}}</p>
+            <p class="card-text ">
+            <h6 class="ml-2">Posted on: {{post.date}}</h6>
+            </p>
+            <p class="card-text ml-2"> {{post.content|truncatechars:350|safe}} </p>
+            <div class="text-center">
+                <a href="{% url 'fullBlog' post.id %}" class="btn btn-outline-primary">Read More</a>
+
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</div> 
+{% endblock %}

@@ -1,0 +1,35 @@
+<div class="form-group">
+                    <svg width="4em" height="4em" viewBox="0 0 16 16" id="icon" class="bi bi-person-circle"
+                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
+                        <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        <path fill-rule="evenodd"
+                            d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+                    </svg>
+                    <img id="blah" src="#" style="border-radius: 50px;" alt="" />
+                    <label for="file">Profile Photo</label>
+                    <input type="file" class="form-control-file my-2" id="file" onchange="readURL(this); on">
+                    <script>
+                        var svg = document.getElementById("icon");
+
+                        function readURL(input) {
+                            if (input.files && input.files[0]) {
+                                var reader = new FileReader();
+
+                                reader.onload = function (e) {
+                                    $('#blah')
+                                        .attr('src', e.target.result)
+                                        .width(60)
+                                        .height(65);
+                                };
+                                svg.parentNode.removeChild(svg);
+                                reader.readAsDataURL(input.files[0]);
+                            }
+                        }
+                    </script>
+                </div>
+
+
+
+Django (/ˈdʒæŋɡoʊ/ JANG-goh; stylised as django)[4] is a Python-based free and open-source web framework that follows the model-template-view (MVC) architectural pattern.[5][6] It is maintained by the Django Software Foundation (DSF), an American independent organization established as a 501(c)(3) non-profit.  Django's primary goal is to ease the creation of complex, database-driven websites. The framework emphasizes reusability and "pluggability" of components, less code, low coupling, rapid development, and the principle of don't repeat yourself.[7] Python is used throughout, even for settings files and data models. Django also provides an optional administrative create, read, update and delete interface that is generated dynamically through introspection and configured via admin models.

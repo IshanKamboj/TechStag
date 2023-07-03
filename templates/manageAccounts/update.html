@@ -1,0 +1,43 @@
+{% extends 'manageAccounts/manage_base.html' %}
+{% block title %} Update Profile -{{request.user}} {% endblock %}
+{% block body %}
+<img src="{{request.user.profile.image.url}}" class=" mx-auto d-block"
+    style="height:280px;width:280px;border-radius:200px;">
+
+<div class="text-center ">
+    <h4 class="mx-2">{{request.user.profile.designation}}</h4>
+</div>
+<div class="container my-5 w-75">
+    <h1 class="display-4 text-center mb-3"><u>Update Profile</u></h1>
+    <form action="update" method="POST"  >
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputfname">First Name</label>
+                <input type="text" name="fname" class="form-control" id="inputfname" value="{{request.user.first_name}}"
+                    placeholder="Alice">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputlname">Last Name</label>
+                <input type="text" name="lname" value="{{request.user.last_name}}" class="form-control" id="inputlname"
+                    placeholder="Smith">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Email</label>
+                <input type="email" name="email" value="{{request.user.email}} " class="form-control" id="inputAddress"
+                    placeholder="abc@example.com">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputlname">Designation</label>
+                <input type="text" name="designation" value="{{request.user.profile.designation}}" class="form-control"
+                    id="inputlname" placeholder="Smith">
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-primary">Update</button></div>
+    </form>
+</div>
+{% endblock %}

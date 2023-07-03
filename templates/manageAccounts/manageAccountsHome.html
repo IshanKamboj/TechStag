@@ -1,0 +1,45 @@
+{% extends 'manageAccounts/manage_base.html' %}
+{% block title %} Manage Accounts -{{request.user}} {% endblock %}
+{% block body %}
+<style>
+    .image{
+        height:280px;
+        width:280px;
+        border-radius:200px;
+    }
+    
+</style>
+
+<img src="{{request.user.profile.image.url}}" onmousemove="toggle()" class="image mx-auto d-block " >
+    
+    
+
+<div class="text-center ">
+    <h4 class="mx-2">{{request.user.profile.designation}}</h4>
+</div>
+<div class="container text-center  my-5">
+
+
+    <div class="row justify-content-md-center">
+        <div class="form-group col-md-3">
+            <h2><label for="">First Name:</label></h2>
+            <h5 class="text-muted">{{request.user.first_name}}</h5>
+        </div>
+        <div class="form-group col-md-3">
+            <h2>Last Name:</h2>
+            {% if request.user.last_name|length_is:'0' %}
+            <h5 class="text-muted">Not Given</h5>
+            {% else %}
+            <h5 class="text-muted">{{request.user.last_name}}</h5>
+            {% endif %}
+        </div>
+    </div>
+    <div class="form-group">
+        <h2>Email:</h2>
+        <h5 class="text-muted">{{request.user.email}}</h5>
+    </div>
+
+
+
+</div>
+{% endblock %}

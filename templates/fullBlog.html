@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}  {% endblock %}
+{% block body %}
+<div class="container my-5">
+    <div class="card">
+        {% for post in posts %}
+        <div class="card-header">
+            <h4>{{post.title}}</h4>
+        </div>
+        <div class="card-body ">
+            
+            
+            <p class="cardtext"><img src="{{post.profile}}" width="90" height="90" style="border-radius: 50px;" alt="" class="d-inline-block align-center mr-1" loading="lazy">{{post.username}}, {{post.designation}}</p>
+            <p class="card-text "><h6 class="ml-2">Posted on: {{post.date}}</h6></p>
+            <p class="card-text ml-2"> {{post.content|safe}} </p>
+            <div class="text-center">
+            
+            
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

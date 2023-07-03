@@ -1,0 +1,27 @@
+{% extends 'manageAccounts/manage_base.html' %}
+{% block title %}Manage Your Blogs -{{request.user}} {% endblock %}
+{% block body %}
+<div class="container">
+    <h1 class="dispaly-4">Your Blogs</h1>
+    {% if blogs|length_is:"0" %}
+    <button class="btn btn-primary">Create One</button>
+    {% endif %}
+    <div class="row">
+        {% for blog in blogs %}
+
+        <div class="col-sm-3">
+            <div class=" h-100 " style="width: 18rem;">
+                <div class="card-body">
+
+                    <p class="card-text">{{blog.content|truncatechars:220|safe}}</p>
+                    <a href="#" class="card-link">Read More</a>
+
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+        
+    </div>
+</div>
+{% endblock %}
